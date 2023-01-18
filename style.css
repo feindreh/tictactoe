@@ -6,3 +6,16 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-size: 100%;
     vertical-align: baseline;
 }
+#board-wrap{
+    width: 500px;
+}
+#board{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap:25px;
+    background-color:rgb(26, 24, 24);
+}
+.board-field{
+    background-color: white;
+    aspect-ratio: 1;
+}
