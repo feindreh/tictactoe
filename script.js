@@ -6,6 +6,7 @@ const Game = (() => {
 
   for (const _part of _field) {
     _part.addEventListener('click', () => {
+      _gameboard[+_part.id - 1] = 'X';
     });
   }
 
@@ -17,11 +18,8 @@ const Game = (() => {
     }
   };
   const renderBoard = () => {
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < 3; j++) {
-        console.log(_gameboard[i][j]);
-        console.log(_field[i][j]);
-      }
+    for (const _part of _field) {
+      _field[+_part.id - 1].innerHTML = _gameboard[+_part.id - 1];
     }
   };
 
