@@ -3,12 +3,10 @@
 const Game = (() => {
   const _gameboard = ['', '', '', '', '', '', '', '', ''];
   const _field = [...document.querySelectorAll('.board-field')];
+  const _text = [...document.querySelectorAll('.field-text')];
 
-  for (const _part of _field) {
-    _part.addEventListener('click', () => {
-      _gameboard[+_part.id - 1] = 'X';
-      renderBoard();
-    });
+  for (let i = 0; i < _field.length; i++) {
+    _field[i].addEventListener('click', () => { _gameboard[i] = 'X'; renderBoard(); });
   }
 
   const resetBoard = () => {
@@ -17,8 +15,8 @@ const Game = (() => {
     }
   };
   const renderBoard = () => {
-    for (const _part of _field) {
-      _field[+_part.id - 1].innerHTML = _gameboard[+_part.id - 1];
+    for (let i = 0; i < _field.length; i++) {
+      _text[i].innerHTML = _gameboard[i];
     }
   };
 
