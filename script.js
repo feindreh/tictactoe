@@ -10,8 +10,6 @@ const Game = (() => {
     });
   }
 
-  const getField = () => Array.from(_field);
-  const getBoard = () => Array.from(_gameboard);
   const newBoard = () => {
     for (let i = 0; i < _gameboard.length; i++) {
       _gameboard[i] = '';
@@ -24,9 +22,7 @@ const Game = (() => {
   };
 
   return {
-    getField,
     renderBoard,
-    getBoard,
     newBoard,
   };
 })();
