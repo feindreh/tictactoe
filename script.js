@@ -9,6 +9,7 @@ const boardField = [...document.querySelectorAll('.board-field')];
 const text = [...document.querySelectorAll('.field-text')];
 const player1 = document.querySelector('#player1');
 const player2 = document.querySelector('#player2');
+const header = document.querySelector('#header');
 
 const Game = (() => {
   const _gameboard = ['', '', '', '', '', '', '', '', ''];
@@ -28,26 +29,41 @@ const Game = (() => {
     if (boolean !== true) { player1.style.border = 'solid 15px green'; player2.style.border = 'solid 15px white'; }
     _player1 = (boolean !== true);
   };
+  const _check = (c) => {
+    for (const part of c) {
+      if (_gameboard[part] === '') { return false; }
+    }
+    if (_gameboard[c[0]] === _gameboard[c[1]] && _gameboard[c[1]] === _gameboard[c[2]]) { return true; }
+    return false;
+  };
+  const _validate = () => {
+    const possible = {
+      1: [0, 3, 6],
+      2: [1, 4, 7],
+      3: [2, 5, 8],
+      4: [0, 1, 2],
+      5: [3, 4, 5],
+      6: [6, 7, 8],
+      7: [0, 4, 8],
+      8: [6, 4, 2],
+    };
+    for (const combination in possible) {
+      console.log(_check(possible[combination]));
+      if (_check(possible[combination])) { alert('win'); }
+    }
+    for (const thing of _gameboard) {
+      if (thing === '') { return; }
+    }
+    alert('draw');
+  };
+
   const resetBoard = () => {
     for (let i = 0; i < _gameboard.length; i++) {
       _gameboard[i] = '';
     }
     _player1 = true;
   };
-  const _validate = () => {
-    if (_gameboard[0] === _gameboard[1] && _gameboard[0] === _gameboard[2]) { if (_gameboard[0] !== '' && _gameboard[1] !== '' && _gameboard[2] !== '') { alert('win'); } }
-    if (_gameboard[3] === _gameboard[4] && _gameboard[3] === _gameboard[5]) { if (_gameboard[3] !== '' && _gameboard[4] !== '' && _gameboard[5] !== '') { alert('win'); } }
-    if (_gameboard[6] === _gameboard[7] && _gameboard[6] === _gameboard[8]) { if (_gameboard[6] !== '' && _gameboard[7] !== '' && _gameboard[8] !== '') { alert('win'); } }
-    if (_gameboard[0] === _gameboard[3] && _gameboard[0] === _gameboard[6]) { if (_gameboard[0] !== '' && _gameboard[3] !== '' && _gameboard[6] !== '') { alert('win'); } }
-    if (_gameboard[1] === _gameboard[4] && _gameboard[1] === _gameboard[7]) { if (_gameboard[1] !== '' && _gameboard[4] !== '' && _gameboard[7] !== '') { alert('win'); } }
-    if (_gameboard[2] === _gameboard[5] && _gameboard[2] === _gameboard[8]) { if (_gameboard[2] !== '' && _gameboard[5] !== '' && _gameboard[8] !== '') { alert('win'); } }
-    if (_gameboard[0] === _gameboard[4] && _gameboard[0] === _gameboard[8]) { if (_gameboard[0] !== '' && _gameboard[4] !== '' && _gameboard[8] !== '') { alert('win'); } }
-    if (_gameboard[6] === _gameboard[4] && _gameboard[6] === _gameboard[2]) { if (_gameboard[6] !== '' && _gameboard[4] !== '' && _gameboard[2] !== '') { alert('win'); } }
-    for (const part of _gameboard) {
-      if (part === '') { return; }
-    }
-    alert('draw');
-  };
+
   for (let i = 0; i < boardField.length; i++) {
     boardField[i].addEventListener('click', () => { _fill(i); _renderBoard(); _validate(); });
   }
