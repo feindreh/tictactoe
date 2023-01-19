@@ -4,9 +4,12 @@ const Game = (() => {
   const _gameboard = ['', '', '', '', '', '', '', '', ''];
   const _field = [...document.querySelectorAll('.board-field')];
   const _text = [...document.querySelectorAll('.field-text')];
-
+  const _fill = (choice) => {
+    if (player1) { _gameboard[choice] = 'X'; player1 = false; } else { _gameboard[choice] = 'O'; player1 = true; }
+  };
+  let player1 = true;
   for (let i = 0; i < _field.length; i++) {
-    _field[i].addEventListener('click', () => { _gameboard[i] = 'X'; renderBoard(); });
+    _field[i].addEventListener('click', () => { _fill(i); renderBoard(); });
   }
 
   const resetBoard = () => {

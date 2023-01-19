@@ -12,7 +12,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 #board{
     display:grid;
     grid-template-columns: repeat(3,1fr);
-    grid-gap:25px;
+    grid-gap:12px;
     background-color:rgb(26, 24, 24);
 }
 .board-field{
@@ -24,6 +24,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 .field-text{
-    font-size: 30px;
+    font-size: 100px;
     text-align: center;
 }
