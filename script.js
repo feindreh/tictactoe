@@ -24,8 +24,8 @@ const Game = (() => {
     }
   };
   const _changePlayer = (boolean) => {
-    if (boolean) { player2.style.border = 'solid 5px green'; player1.style.border = 'solid 5px white'; }
-    if (boolean !== true) { player1.style.border = 'solid 5px green'; player2.style.border = 'solid 5px white'; }
+    if (boolean) { player2.style.border = 'solid 15px green'; player1.style.border = 'solid 15px white'; }
+    if (boolean !== true) { player1.style.border = 'solid 15px green'; player2.style.border = 'solid 15px white'; }
     _player1 = (boolean !== true);
   };
   const resetBoard = () => {
@@ -58,19 +58,25 @@ const Game = (() => {
 
 const Prompt = (() => {
   createGame.addEventListener('click', () => {
-    console.log(Player1.name(), Player2.name());
+    _setNames(Player1.name(), Player2.name());
+    player1.style.visibility = 'visible';
+    player2.style.visibility = 'visible';
     _hidePrompt();
   });
   const _hidePrompt = () => {
     blackbox.style.visibility = 'hidden';
     prompt.style.visibility = 'hidden';
   };
+  const _setNames = (name1, name2) => {
+    player1.innerHTML = name1;
+    player2.innerHTML = name2;
+  };
 })();
 
 const personFactory = (selector) => {
   const name = () => selector.value;
 
-  return { name, selector };
+  return { name };
 };
 
 const Player1 = personFactory(document.querySelector('#Player1'));

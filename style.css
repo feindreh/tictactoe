@@ -47,6 +47,29 @@ body{
 }
 
 /*content*/
+#player1{
+    border:15px solid green;
+}
+#player2{
+    border:15px solid white;
+}
+#player1,#player2{
+    overflow:hidden;
+    visibility: hidden;
+    align-self: center;
+    justify-self: center;
+    font-size: 40px;
+    background-color: rgb(149, 154, 156);
+    min-width:200px;
+    text-align: center;
+    border-radius: 20px;
+}
+.player-wrap{
+    display: grid;
+    grid-template: 3fr 1fr/ 1fr;
+
+}
+
 #content{
     border-top:2px solid black;
     border-bottom: 2px solid black;
