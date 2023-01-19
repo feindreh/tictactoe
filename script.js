@@ -11,6 +11,7 @@ const text = [...document.querySelectorAll('.field-text')];
 const player1 = document.querySelector('#player1');
 const player2 = document.querySelector('#player2');
 const textbox = document.querySelector('#textbox');
+const newGameButton = document.querySelector('#newGameButton');
 
 const Game = (() => {
   const _gameboard = ['', '', '', '', '', '', '', '', ''];
@@ -25,6 +26,8 @@ const Game = (() => {
     8: [6, 4, 2],
   };
   let _player1 = true;
+  let _locked = false;
+
   const _fill = (choice) => {
     if (_gameboard[choice] !== '') { return; }
     if (_player1) { _gameboard[choice] = 'X'; } else { _gameboard[choice] = 'O'; }
@@ -49,24 +52,30 @@ const Game = (() => {
   };
   const _validate = () => {
     for (const combination in _possible) {
-      if (_check(_possible[combination])) { textbox.innerHTML = "It's a Win !!!"; }
+      if (_check(_possible[combination])) { textbox.innerHTML = "It's a Win !!!"; _locked = true; newGameButton.style.visibility = 'visible'; }
     }
     for (const thing of _gameboard) {
       if (thing === '') { return; }
     }
-    console.log('draw');
     textbox.innerHTML = "It's a Draw ....";
+    _locked = true;
+    newGameButton.style.visibility = 'visible';
   };
-  const _resetBoard = () => {
+  const resetBoard = () => {
     for (let i = 0; i < _gameboard.length; i++) {
       _gameboard[i] = '';
     }
     _player1 = true;
+    _locked = false;
+    textbox.innerHTML = '';
   };
 
   for (let i = 0; i < boardField.length; i++) {
-    boardField[i].addEventListener('click', () => { _fill(i); _renderBoard(); _validate(); });
+    boardField[i].addEventListener('click', () => { if (_locked) { return; } _fill(i); _renderBoard(); _validate(); });
   }
+  return {
+    resetBoard,
+  };
 })();
 
 const Prompt = (() => {
@@ -94,3 +103,8 @@ const personFactory = (selector) => {
 
 const Player1 = personFactory(document.querySelector('#Player1'));
 const Player2 = personFactory(document.querySelector('#Player2'));
+
+newGameButton.addEventListener('click', () => {
+  newGameButton.style.visibility = 'hidden';
+  Game.resetBoard();
+});

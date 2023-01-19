@@ -16,6 +16,21 @@ body{
     grid-template-rows: 100px 1fr 100px;
 }
 /*prompt*/
+#newGameButton{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 120px;
+    background:rgb(25, 31, 30);
+    color:rgb(255, 255, 255);
+    border-radius: 25px;
+    visibility: hidden;
+    box-shadow: 5px 5px 10px rgb(19, 18, 18);
+}
+#newGameButton > p {
+    font-size:50px;
+}
 #textbox{
     position: absolute;
     top: 50%;
