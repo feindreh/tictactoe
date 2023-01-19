@@ -6,6 +6,27 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-size: 100%;
     vertical-align: baseline;
 }
+body{
+    height:100%;
+}
+
+#wrapper{
+    height:100vh;
+    display: grid;
+    grid-template-rows: 100px 1fr 100px;
+}
+/*Header*/
+#header{
+    background-color: rgb(151, 145, 145);
+    box-shadow:inset 0px -5px 10px rgb(0, 0, 0);
+}
+
+/*content*/
+#content{
+    border-top:2px solid black;
+    border-bottom: 2px solid black;
+    padding:20px;
+}
 #board-wrap{
     width: 500px;
 }
@@ -26,4 +47,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 .field-text{
     font-size: 100px;
     text-align: center;
+}
+
+/*Footer*/
+#footer{
+    background-color: grey;
+    box-shadow:inset 0px 5px 10px rgb(0, 0, 0);
 }
