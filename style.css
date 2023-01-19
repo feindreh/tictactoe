@@ -16,6 +16,16 @@ body{
     grid-template-rows: 100px 1fr 100px;
 }
 /*prompt*/
+#textbox{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    background:rgba(0, 0, 0, 0.979);
+    color:rgb(255, 255, 255);
+    border-radius: 25px;
+}
 #prompt,#blackbox{
     position: absolute;
     visibility: visible;
@@ -76,6 +86,7 @@ body{
     padding:20px;
     display:grid;
     grid-template-columns:1fr 3fr 1fr;
+    background-color: rgb(224, 224, 216);
 }
 #board-wrap{
     width: 500px;
@@ -87,10 +98,10 @@ body{
     display:grid;
     grid-template-columns: repeat(3,1fr);
     grid-gap:12px;
-    background-color:rgb(26, 24, 24);
+    background-color:rgb(44, 42, 42);
 }
 .board-field{
-    background-color: white;
+    background-color:rgb(224, 224, 216);
     aspect-ratio: 1;
     display: flex;
     flex-direction: column;

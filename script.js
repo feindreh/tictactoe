@@ -1,3 +1,4 @@
+/* eslint-disable guard-for-in */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-restricted-syntax */
@@ -9,10 +10,20 @@ const boardField = [...document.querySelectorAll('.board-field')];
 const text = [...document.querySelectorAll('.field-text')];
 const player1 = document.querySelector('#player1');
 const player2 = document.querySelector('#player2');
-const header = document.querySelector('#header');
+const textbox = document.querySelector('#textbox');
 
 const Game = (() => {
   const _gameboard = ['', '', '', '', '', '', '', '', ''];
+  const _possible = {
+    1: [0, 3, 6],
+    2: [1, 4, 7],
+    3: [2, 5, 8],
+    4: [0, 1, 2],
+    5: [3, 4, 5],
+    6: [6, 7, 8],
+    7: [0, 4, 8],
+    8: [6, 4, 2],
+  };
   let _player1 = true;
   const _fill = (choice) => {
     if (_gameboard[choice] !== '') { return; }
@@ -37,27 +48,16 @@ const Game = (() => {
     return false;
   };
   const _validate = () => {
-    const possible = {
-      1: [0, 3, 6],
-      2: [1, 4, 7],
-      3: [2, 5, 8],
-      4: [0, 1, 2],
-      5: [3, 4, 5],
-      6: [6, 7, 8],
-      7: [0, 4, 8],
-      8: [6, 4, 2],
-    };
-    for (const combination in possible) {
-      console.log(_check(possible[combination]));
-      if (_check(possible[combination])) { alert('win'); }
+    for (const combination in _possible) {
+      if (_check(_possible[combination])) { textbox.innerHTML = "It's a Win !!!"; }
     }
     for (const thing of _gameboard) {
       if (thing === '') { return; }
     }
-    alert('draw');
+    console.log('draw');
+    textbox.innerHTML = "It's a Draw ....";
   };
-
-  const resetBoard = () => {
+  const _resetBoard = () => {
     for (let i = 0; i < _gameboard.length; i++) {
       _gameboard[i] = '';
     }
@@ -67,9 +67,6 @@ const Game = (() => {
   for (let i = 0; i < boardField.length; i++) {
     boardField[i].addEventListener('click', () => { _fill(i); _renderBoard(); _validate(); });
   }
-  return {
-    resetBoard,
-  };
 })();
 
 const Prompt = (() => {
