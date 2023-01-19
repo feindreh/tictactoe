@@ -15,6 +15,30 @@ body{
     display: grid;
     grid-template-rows: 100px 1fr 100px;
 }
+/*prompt*/
+#prompt,#blackbox{
+    position: absolute;
+}
+#blackbox{
+    background-color: rgba(0, 0, 0, 0.795);
+    height: 100%;
+    width: 100%;
+}
+#prompt{
+    background-color: rgb(255, 255, 255);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap:10px;
+    padding:20px;
+    border:solid 5px rgb(160, 157, 157);
+    border-radius: 15px;
+}
+#prompt > p{
+    text-align: center;
+}
 /*Header*/
 #header{
     background-color: rgb(151, 145, 145);

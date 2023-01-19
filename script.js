@@ -14,10 +14,11 @@ const Game = (() => {
       _text[i].innerHTML = _gameboard[i];
     }
   };
-  const _resetBoard = () => {
+  const resetBoard = () => {
     for (let i = 0; i < _gameboard.length; i++) {
       _gameboard[i] = '';
     }
+    _player1 = true;
   };
   for (let i = 0; i < _field.length; i++) {
     _field[i].addEventListener('click', () => { _fill(i); _renderBoard(); validate(); });
@@ -38,5 +39,6 @@ const Game = (() => {
   };
   return {
     validate,
+    resetBoard,
   };
 })();
