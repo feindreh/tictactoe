@@ -18,6 +18,7 @@ body{
 /*prompt*/
 #prompt,#blackbox{
     position: absolute;
+    visibility: visible;
 }
 #blackbox{
     background-color: rgba(0, 0, 0, 0.795);
