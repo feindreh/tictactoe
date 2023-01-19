@@ -23,7 +23,7 @@ const Game = (() => {
   for (let i = 0; i < _field.length; i++) {
     _field[i].addEventListener('click', () => { _fill(i); _renderBoard(); validate(); });
   }
-  const validate = () => {
+  const _validate = () => {
     if (_gameboard[0] === _gameboard[1] && _gameboard[0] === _gameboard[2]) { if (_gameboard[0] !== '' && _gameboard[1] !== '' && _gameboard[2] !== '') { alert('win'); } }
     if (_gameboard[3] === _gameboard[4] && _gameboard[3] === _gameboard[5]) { if (_gameboard[3] !== '' && _gameboard[4] !== '' && _gameboard[5] !== '') { alert('win'); } }
     if (_gameboard[6] === _gameboard[7] && _gameboard[6] === _gameboard[8]) { if (_gameboard[6] !== '' && _gameboard[7] !== '' && _gameboard[8] !== '') { alert('win'); } }
@@ -38,7 +38,19 @@ const Game = (() => {
     alert('draw');
   };
   return {
-    validate,
     resetBoard,
   };
 })();
+
+const Prompt = (() => {
+  const _createGame = document.querySelector('#createGame');
+  _createGame.addEventListener('click', () => { console.log(Player1.name(), Player2.name()); });
+})();
+
+const personFactory = (selector) => {
+  const name = () => selector.value;
+  return { name };
+};
+
+const Player1 = personFactory(document.querySelector('#Player1'));
+const Player2 = personFactory(document.querySelector('#Player2'));
