@@ -18,7 +18,7 @@ body{
 /*prompt*/
 #newGameButton{
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 120px;
@@ -33,7 +33,7 @@ body{
 }
 #textbox{
     position: absolute;
-    top: 50%;
+    top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 100px;
@@ -113,7 +113,10 @@ body{
     display:grid;
     grid-template-columns: repeat(3,1fr);
     grid-gap:12px;
-    background-color:rgb(44, 42, 42);
+    background-color:rgb(26, 25, 25);
+    border:solid rgb(54, 53, 53) 10px;
+    box-shadow: 0px 10px 15px rgb(32, 31, 31),10px 0px 15px rgb(32, 31, 31),-10px 0px 15px rgb(32, 31, 31), 0px -10px 15px rgb(32, 31, 31);
+    border-radius: 5px;
 }
 .board-field{
     background-color:rgb(224, 224, 216);
