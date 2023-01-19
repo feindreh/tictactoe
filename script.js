@@ -68,6 +68,7 @@ const Game = (() => {
     _player1 = true;
     _locked = false;
     textbox.innerHTML = '';
+    _renderBoard();
   };
 
   for (let i = 0; i < boardField.length; i++) {
